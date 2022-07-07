@@ -17,6 +17,7 @@ import javax.persistence.Table;
 @Entity
 @Table(name ="ORDERS")
 public class Order {
+
     @Id
     @GeneratedValue
     @Column(name="ORDER_ID")
@@ -76,5 +77,10 @@ public class Order {
 
     public void setOrderItems(List<OrderItem> orderItems) {
         this.orderItems = orderItems;
+    }
+
+    public void addOrderItem(OrderItem orderItem) {
+        orderItems.add(orderItem);
+        orderItem.setOrder(this);
     }
 }
